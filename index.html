@@ -89,6 +89,8 @@
   .intake button:hover{ opacity:.85; }
   .form-status{ font-size:.85rem; min-height:1.2em; color:var(--ink-soft); margin-top:10px; }
   .form-status a{ color:var(--accent); text-decoration:underline; }
+  .form-status.success{ color:#1E8E4A; }
+  .form-status.error{ color:#C0392B; }
   .contact-line{ font-size:.9rem; color:var(--ink-soft); margin-top:14px; }
   .contact-line a{ color:var(--ink-soft); text-decoration:underline; }
   .contact-line a:hover{ color:var(--accent); }
@@ -147,20 +149,46 @@
   (function(){
     var form = document.getElementById('signup-form');
     var status = document.getElementById('signup-status');
+    var button = form.querySelector('button[type="submit"]');
     form.addEventListener('submit', function(e){
       e.preventDefault();
-      var email = document.getElementById('signup-email').value.trim();
+      var input = document.getElementById('signup-email');
+      var email = input.value.trim();
       if(!email){ return; }
-      var mailto = 'mailto:hello@bronxchi.org?subject=' +
-        encodeURIComponent('I want to volunteer with BCHI') +
-        '&body=' + encodeURIComponent('Please add me as a volunteer: ' + email);
-      var link = document.createElement('a');
-      link.href = mailto;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      status.innerHTML = 'If your email app didn\'t open, email us directly at ' +
-        '<a href="' + mailto + '">hello@bronxchi.org</a>.';
+
+      button.disabled = true;
+      button.textContent = 'Joining...';
+      status.className = 'form-status';
+      status.textContent = '';
+
+      fetch('https://app.loops.so/api/newsletter-form/cmpwouwtq0cd80jxmwhjhat5a', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'userGroup=&mailingLists=&email=' + encodeURIComponent(email)
+      })
+        .then(function(res){
+          return res.json().catch(function(){ return {}; }).then(function(data){
+            return { ok: res.ok, statusText: res.statusText, data: data };
+          });
+        })
+        .then(function(result){
+          if(result.ok){
+            status.classList.add('success');
+            status.textContent = 'Thanks! We\'ll be in touch.';
+            form.reset();
+          } else {
+            status.classList.add('error');
+            status.textContent = result.data && result.data.message ? result.data.message : 'Something went wrong, please try again.';
+          }
+        })
+        .catch(function(){
+          status.classList.add('error');
+          status.textContent = 'Something went wrong, please try again.';
+        })
+        .finally(function(){
+          button.disabled = false;
+          button.textContent = 'Join Us';
+        });
     });
   })();
 </script>

@@ -1,102 +1,119 @@
 <title>Bronx Cognitive Health Initiative</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#FFFFFF; --bg-soft:#F5F4F2; --card:#FFFFFF;
-    --ink:#0E0E10; --ink-soft:#45454A; --muted:#6B6B6F;
-    --accent:#0E5C48; --accent-deep:#0A4436; --accent-ink:#FFFFFF;
-    --line:#E4E2DD;
-    --focus:#0E5C48;
+    --bg:#FBF0E1; --bg-soft:#F4E2C8; --card:#FFF9EF;
+    --ink:#1B1815; --ink-soft:#4A423B; --muted:#8A7F73;
+    --line:#E9D9C0;
+    --grad-1:#E93A8C; --grad-2:#F2665B; --grad-3:#F5A65B;
+    --accent:#E93A8C; --accent-ink:#FFFFFF;
+    --focus:#E93A8C;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg:#0E0E10; --bg-soft:#17171A; --card:#141416;
-      --ink:#F5F4F2; --ink-soft:#C9C8C4; --muted:#9A9A9E;
-      --accent:#6FCBA8; --accent-deep:#8FE0BE; --accent-ink:#0E0E10;
-      --line:#2A2A2E; --focus:#6FCBA8;
+      --bg:#17130F; --bg-soft:#211A14; --card:#1D1712;
+      --ink:#F5EAD9; --ink-soft:#D8C9B5; --muted:#9C8F7D;
+      --line:#33291F;
+      --grad-1:#FF4FA0; --grad-2:#FF7A63; --grad-3:#FFB86B;
+      --accent:#FF4FA0; --accent-ink:#17130F;
+      --focus:#FF4FA0;
     }
   }
   :root[data-theme="dark"]{
-    --bg:#0E0E10; --bg-soft:#17171A; --card:#141416;
-    --ink:#F5F4F2; --ink-soft:#C9C8C4; --muted:#9A9A9E;
-    --accent:#6FCBA8; --accent-deep:#8FE0BE; --accent-ink:#0E0E10;
-    --line:#2A2A2E; --focus:#6FCBA8;
+    --bg:#17130F; --bg-soft:#211A14; --card:#1D1712;
+    --ink:#F5EAD9; --ink-soft:#D8C9B5; --muted:#9C8F7D;
+    --line:#33291F;
+    --grad-1:#FF4FA0; --grad-2:#FF7A63; --grad-3:#FFB86B;
+    --accent:#FF4FA0; --accent-ink:#17130F;
+    --focus:#FF4FA0;
   }
 
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0; background:var(--bg); color:var(--ink);
-    font-family:'IBM Plex Sans', system-ui, -apple-system, sans-serif;
-    line-height:1.55; -webkit-font-smoothing:antialiased;
+    font-family:'Inter', system-ui, -apple-system, sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;
   }
-  h1,h2,h3{ font-family:'Space Grotesk', system-ui, sans-serif; text-wrap:balance; margin:0; letter-spacing:-0.01em; color:var(--ink); }
-  .mono{ font-family:'IBM Plex Mono', ui-monospace, monospace; }
+  h1,h2,h3{ font-family:'Fredoka', system-ui, sans-serif; text-wrap:balance; margin:0; color:var(--ink); }
   a{ color:inherit; }
-  ::selection{ background:var(--accent); color:var(--accent-ink); }
+  ::selection{ background:var(--grad-1); color:#fff; }
   :focus-visible{ outline:2px solid var(--focus); outline-offset:3px; }
 
-  .wrap{ max-width:1040px; margin:0 auto; padding-inline:clamp(20px,5vw,56px); }
+  .wrap{ max-width:1080px; margin:0 auto; padding-inline:clamp(20px,5vw,56px); }
 
-  /* icon mark */
-  .mark{ display:inline-flex; align-items:center; justify-content:center; background:var(--accent); border-radius:7px; flex-shrink:0; }
+  .mark{ display:inline-flex; flex-shrink:0; border-radius:50%; }
 
   header{
     position:sticky; top:0; z-index:20;
-    background:color-mix(in srgb, var(--bg) 90%, transparent);
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
     backdrop-filter: blur(8px);
     border-bottom:1px solid var(--line);
   }
   .nav{ display:flex; align-items:center; justify-content:space-between; padding-block:14px; }
   .wordmark{ display:flex; align-items:center; gap:10px; text-decoration:none; }
-  .wordmark span{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.15rem; letter-spacing:-0.02em; }
+  .wordmark span{ font-family:'Fredoka',sans-serif; font-weight:600; font-size:1.2rem; }
   nav.links{ display:flex; gap:clamp(14px,3vw,28px); }
   nav.links a{ text-decoration:none; font-size:.9rem; color:var(--ink-soft); font-weight:500; }
   nav.links a:hover{ color:var(--accent); }
 
   /* hero */
-  .hero{ position:relative; overflow:hidden; padding-block: clamp(56px,9vw,100px) clamp(48px,8vw,76px); }
-  .hero-pulse{ position:absolute; inset:auto 0 -10% 0; height:280px; opacity:.06; pointer-events:none; }
-  :root:not([data-theme="light"]) .hero-pulse{ opacity:.1; }
+  .hero{ position:relative; overflow:hidden; padding-block: clamp(48px,8vw,88px); }
+  .hero-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(24px,5vw,48px); align-items:center; position:relative; }
+  @media (max-width:820px){ .hero-grid{ grid-template-columns:1fr; } }
+  .blob-stage{ position:relative; aspect-ratio:1/1; max-height:440px; }
+  .blob{
+    position:absolute; inset:6%;
+    border-radius:50%;
+    filter: blur(46px) saturate(1.15);
+    background:
+      radial-gradient(circle at 50% 18%, var(--grad-1) 0%, transparent 58%),
+      radial-gradient(circle at 55% 52%, var(--grad-2) 0%, transparent 55%),
+      radial-gradient(circle at 45% 86%, var(--grad-3) 0%, transparent 60%);
+  }
+  .grain{
+    position:absolute; inset:6%; border-radius:50%;
+    filter:url(#bchi-grain); opacity:.35; mix-blend-mode:overlay; pointer-events:none;
+  }
   .eyebrow{
     display:inline-flex; align-items:center; gap:8px;
-    font-family:'IBM Plex Mono', monospace; font-size:.75rem; letter-spacing:.06em; text-transform:uppercase;
-    color:var(--accent); font-weight:500;
+    font-size:.78rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--accent); font-weight:600;
   }
-  .hero h1{ font-size:clamp(2.4rem,5vw,3.8rem); font-weight:700; line-height:1.04; margin-top:20px; max-width:16ch; }
-  .hero p.lede{ max-width:56ch; font-size:1.1rem; color:var(--ink-soft); margin-top:22px; }
-  .hero .status{ margin-top:10px; font-size:.85rem; color:var(--muted); }
-  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:34px; position:relative; }
+  .hero h1{ font-size:clamp(2.3rem,4.6vw,3.5rem); font-weight:600; line-height:1.08; margin-top:18px; }
+  .hero p.lede{ max-width:48ch; font-size:1.08rem; color:var(--ink-soft); margin-top:20px; }
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:30px; }
   .btn{
-    display:inline-flex; align-items:center; gap:8px; padding:13px 24px; border-radius:5px;
+    display:inline-flex; align-items:center; gap:8px; padding:13px 26px; border-radius:999px;
     text-decoration:none; font-weight:600; font-size:.95rem; border:1px solid transparent;
-    transition:transform .12s ease, background .12s ease;
+    transition:transform .12s ease, opacity .12s ease;
   }
-  .btn-primary{ background:var(--accent); color:var(--accent-ink); }
-  .btn-primary:hover{ transform:translateY(-1px); background:var(--accent-deep); }
+  .btn-primary{ background:linear-gradient(90deg, var(--grad-1), var(--grad-2)); color:#fff; }
+  .btn-primary:hover{ transform:translateY(-1px); opacity:.92; }
   .btn-ghost{ border-color:var(--line); color:var(--ink); }
   .btn-ghost:hover{ border-color:var(--accent); color:var(--accent); }
 
   section{ padding-block: clamp(44px,7vw,76px); position:relative; }
   .section-head{ max-width:64ch; margin-bottom:clamp(28px,4vw,40px); }
-  .section-head h2{ font-size:clamp(1.6rem,3vw,2.1rem); font-weight:700; }
+  .section-head h2{ font-size:clamp(1.55rem,3vw,2rem); font-weight:600; }
   .section-head .eyebrow{ margin-bottom:12px; }
   .section-head p{ color:var(--ink-soft); margin-top:12px; font-size:1.02rem; max-width:58ch; }
 
   .grid-2{ display:grid; grid-template-columns: 1.1fr .9fr; gap:clamp(28px,5vw,56px); align-items:start; }
   @media (max-width:760px){ .grid-2{ grid-template-columns:1fr; } }
 
-  .callout{ background:var(--card); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:4px; padding:22px 24px; }
+  .callout{ background:var(--card); border:1px solid var(--line); border-radius:20px; padding:24px 26px; }
+  .callout::before{ content:''; display:block; width:34px; height:5px; border-radius:3px; background:linear-gradient(90deg,var(--grad-1),var(--grad-3)); margin-bottom:16px; }
   .callout p{ margin:0; color:var(--ink-soft); font-size:.98rem; }
-  .callout .src{ display:block; margin-top:12px; font-size:.78rem; color:var(--muted); font-family:'IBM Plex Mono',monospace; }
+  .callout .src{ display:block; margin-top:12px; font-size:.78rem; color:var(--muted); }
 
-  .topics{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:28px; }
+  .topics{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:28px; }
   @media (max-width:760px){ .topics{ grid-template-columns:1fr; } }
-  .topic-card{ background:var(--card); padding:26px 22px; display:flex; flex-direction:column; gap:10px; }
-  .topic-card .tag{ font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; color:var(--accent); font-weight:500; }
-  .topic-card h3{ font-size:1.15rem; font-weight:700; }
+  .topic-card{ background:var(--card); border:1px solid var(--line); border-radius:20px; padding:26px 24px; display:flex; flex-direction:column; gap:10px; }
+  .topic-card .tag{ font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; color:var(--accent); font-weight:600; }
+  .topic-card h3{ font-size:1.15rem; font-weight:600; }
   .topic-card p{ color:var(--ink-soft); font-size:.92rem; margin:0; }
 
   .disclaimer{ font-size:.82rem; color:var(--muted); margin-top:28px; max-width:62ch; border-top:1px solid var(--line); padding-top:16px; }
@@ -104,33 +121,40 @@
   .steps{ margin-top:30px; display:flex; flex-direction:column; }
   .step{ display:grid; grid-template-columns:56px 1fr; gap:20px; padding-block:22px; border-top:1px solid var(--line); }
   .step:last-child{ border-bottom:1px solid var(--line); }
-  .step .num{ font-family:'IBM Plex Mono',monospace; color:var(--accent); font-weight:500; font-size:1.05rem; padding-top:2px; }
-  .step h3{ font-size:1.05rem; font-weight:700; }
+  .step .num{ color:var(--accent); font-weight:600; font-size:1.05rem; padding-top:2px; font-family:'Fredoka',sans-serif; }
+  .step h3{ font-size:1.05rem; font-weight:600; }
   .step p{ margin:6px 0 0; color:var(--ink-soft); font-size:.94rem; max-width:58ch; }
 
-  .involve-card{ background:var(--bg-soft); border:1px solid var(--line); border-radius:6px; padding:clamp(28px,4vw,40px); display:grid; grid-template-columns:1.1fr .9fr; gap:36px; }
+  .involve-card{ background:var(--bg-soft); border:1px solid var(--line); border-radius:24px; padding:clamp(28px,4vw,40px); display:grid; grid-template-columns:1.1fr .9fr; gap:36px; }
   @media (max-width:760px){ .involve-card{ grid-template-columns:1fr; } }
   .involve-card h2{ font-size:1.5rem; }
   .involve-card p{ color:var(--ink-soft); margin-top:10px; font-size:.98rem; }
   form.signup{ display:flex; flex-direction:column; gap:12px; }
   .field-row{ display:flex; gap:10px; flex-wrap:wrap; }
-  input[type="email"]{ flex:1; min-width:180px; padding:13px 14px; border:1px solid var(--line); border-radius:5px; background:var(--card); color:var(--ink); font-family:'IBM Plex Sans',sans-serif; font-size:.95rem; }
+  input[type="email"]{ flex:1; min-width:180px; padding:13px 16px; border:1px solid var(--line); border-radius:999px; background:var(--card); color:var(--ink); font-family:'Inter',sans-serif; font-size:.95rem; }
   input:focus{ border-color:var(--accent); }
   .form-status{ font-size:.85rem; min-height:1.2em; color:var(--accent); }
 
   footer{ border-top:1px solid var(--line); padding-block:clamp(32px,5vw,48px); }
   .footer-grid{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; font-size:.88rem; color:var(--muted); }
-  footer .fwordmark{ display:flex; align-items:center; gap:8px; font-family:'Space Grotesk',sans-serif; color:var(--ink); font-weight:700; }
+  footer .fwordmark{ display:flex; align-items:center; gap:8px; font-family:'Fredoka',sans-serif; color:var(--ink); font-weight:600; }
   footer a.mail{ color:var(--accent); text-decoration:none; font-weight:500; }
   footer a.mail:hover{ text-decoration:underline; }
 
   @media (prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } .btn{ transition:none; } }
 </style>
 
+<svg width="0" height="0" style="position:absolute;">
+  <filter id="bchi-grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise"/>
+    <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0"/>
+  </filter>
+</svg>
+
 <header>
   <div class="wrap nav">
     <a class="wordmark" href="#top">
-      <span class="mark"><svg width="30" height="30" viewBox="0 0 100 100"><rect width="100" height="100" rx="18" fill="none"/><path d="M12,50 L30,50 L38,28 L48,72 L58,50 L88,50" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="mark"><svg width="28" height="28" viewBox="0 0 100 100"><defs><linearGradient id="mk" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--grad-1)"/><stop offset="55%" stop-color="var(--grad-2)"/><stop offset="100%" stop-color="var(--grad-3)"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="url(#mk)"/></svg></span>
       <span>BCHI</span>
     </a>
     <nav class="links">
@@ -144,16 +168,21 @@
 
 <main id="top">
   <section class="hero">
-    <svg class="hero-pulse" viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0,140 L260,140 L300,60 L340,180 L380,110 L420,140 L1000,140" fill="none" stroke="var(--ink)" stroke-width="3"/>
-    </svg>
-    <div class="wrap" style="position:relative;">
-      <span class="eyebrow">Bronx, New York &middot; community health literacy</span>
-      <h1>Cognitive health, explained plainly, in the places our elders already trust.</h1>
-      <p class="lede">We design plain-language posters on cognitive health issues facing our community and place them in community spaces across the Bronx.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#involved">Get involved</a>
-        <a class="btn btn-ghost" href="#program">See the program</a>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Bronx, New York &middot; community health literacy</span>
+          <h1>Cognitive health, explained plainly, in the places our elders already trust.</h1>
+          <p class="lede">We design plain-language posters on cognitive health issues facing our community and place them in community spaces across the Bronx.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#involved">Get involved</a>
+            <a class="btn btn-ghost" href="#program">See the program</a>
+          </div>
+        </div>
+        <div class="blob-stage" aria-hidden="true">
+          <div class="blob"></div>
+          <div class="grain"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -240,7 +269,7 @@
         </div>
         <div>
           <form class="signup" id="signup-form">
-            <label for="signup-email" class="mono" style="font-size:.8rem; color:var(--ink-soft);">Email address</label>
+            <label for="signup-email" style="font-size:.8rem; color:var(--ink-soft);">Email address</label>
             <div class="field-row">
               <input type="email" id="signup-email" name="email" placeholder="you@example.com" required autocomplete="email">
               <button type="submit" class="btn btn-primary">Sign up</button>
@@ -257,7 +286,7 @@
   <div class="wrap footer-grid">
     <div>
       <div class="fwordmark">
-        <span class="mark"><svg width="20" height="20" viewBox="0 0 100 100"><path d="M12,50 L30,50 L38,28 L48,72 L58,50 L88,50" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="mark"><svg width="18" height="18" viewBox="0 0 100 100"><defs><linearGradient id="mkf" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--grad-1)"/><stop offset="55%" stop-color="var(--grad-2)"/><stop offset="100%" stop-color="var(--grad-3)"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="url(#mkf)"/></svg></span>
         Bronx Cognitive Health Initiative
       </div>
       <div style="margin-top:6px;">The Bronx, New York</div>

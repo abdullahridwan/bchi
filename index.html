@@ -6,23 +6,23 @@
   :root{
     --bg:#FFFFFF; --bg-soft:#F5F4F2; --card:#FFFFFF;
     --ink:#0E0E10; --ink-soft:#45454A; --muted:#6B6B6F;
-    --accent:#FF5A36; --accent-deep:#E23E1F; --accent-ink:#FFFFFF;
+    --accent:#0E5C48; --accent-deep:#0A4436; --accent-ink:#FFFFFF;
     --line:#E4E2DD;
-    --focus:#FF5A36;
+    --focus:#0E5C48;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
       --bg:#0E0E10; --bg-soft:#17171A; --card:#141416;
       --ink:#F5F4F2; --ink-soft:#C9C8C4; --muted:#9A9A9E;
-      --accent:#FF5A36; --accent-deep:#FF7657; --accent-ink:#0E0E10;
-      --line:#2A2A2E; --focus:#FF7657;
+      --accent:#6FCBA8; --accent-deep:#8FE0BE; --accent-ink:#0E0E10;
+      --line:#2A2A2E; --focus:#6FCBA8;
     }
   }
   :root[data-theme="dark"]{
     --bg:#0E0E10; --bg-soft:#17171A; --card:#141416;
     --ink:#F5F4F2; --ink-soft:#C9C8C4; --muted:#9A9A9E;
-    --accent:#FF5A36; --accent-deep:#FF7657; --accent-ink:#0E0E10;
-    --line:#2A2A2E; --focus:#FF7657;
+    --accent:#6FCBA8; --accent-deep:#8FE0BE; --accent-ink:#0E0E10;
+    --line:#2A2A2E; --focus:#6FCBA8;
   }
 
   *{box-sizing:border-box;}
@@ -99,15 +99,7 @@
   .topic-card h3{ font-size:1.15rem; font-weight:700; }
   .topic-card p{ color:var(--ink-soft); font-size:.92rem; margin:0; }
 
-  .fast{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:24px; }
-  @media (max-width:700px){ .fast{ grid-template-columns:repeat(2,1fr); } }
-  .fast-cell{ background:var(--card); padding:22px 18px; display:flex; flex-direction:column; gap:6px; }
-  .fast-letter{ font-family:'Space Grotesk',sans-serif; font-size:2.1rem; font-weight:700; color:var(--accent); line-height:1; }
-  .fast-cell h4{ margin:0; font-size:.95rem; font-weight:600; }
-  .fast-cell p{ margin:0; font-size:.83rem; color:var(--muted); }
-  .fast-note{ margin-top:16px; font-size:.85rem; font-weight:500; color:var(--accent); display:inline-block; }
-
-  .disclaimer{ font-size:.82rem; color:var(--muted); margin-top:20px; max-width:62ch; border-top:1px solid var(--line); padding-top:16px; }
+  .disclaimer{ font-size:.82rem; color:var(--muted); margin-top:28px; max-width:62ch; border-top:1px solid var(--line); padding-top:16px; }
 
   .steps{ margin-top:30px; display:flex; flex-direction:column; }
   .step{ display:grid; grid-template-columns:56px 1fr; gap:20px; padding-block:22px; border-top:1px solid var(--line); }
@@ -144,7 +136,6 @@
     <nav class="links">
       <a href="#problem">Why</a>
       <a href="#program">Program</a>
-      <a href="#signs">Warning Signs</a>
       <a href="#involved">Get Involved</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -159,7 +150,7 @@
     <div class="wrap" style="position:relative;">
       <span class="eyebrow">Bronx, New York &middot; community health literacy</span>
       <h1>Cognitive health, explained plainly, in the places our elders already trust.</h1>
-      <p class="lede">The Bronx Cognitive Health Initiative designs plain-language English stroke and dementia awareness posters and distributes them through mosques serving the Bronx's Bangladeshi community, closing a gap that clinics and city health campaigns rarely reach.</p>
+      <p class="lede">The Bronx Cognitive Health Initiative designs plain-language English stroke and dementia awareness posters and distributes them across community spaces throughout the Bronx's Bangladeshi community, closing a gap that clinics and city health campaigns rarely reach.</p>
       <p class="status">501(c)(3) status: application pending &middot; founded by a first-generation Bengali-American Bronx resident</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#involved">Get involved</a>
@@ -175,7 +166,7 @@
           <div class="section-head">
             <span class="eyebrow">The gap</span>
             <h2>Awareness materials rarely reach elder, limited-English immigrant households.</h2>
-            <p>Stroke and dementia education in the U.S. is designed around routine contact with a doctor's office, not around the places elders actually spend their time. For Bangladeshi elders in the Bronx, that leaves two barriers stacked on top of each other: access, since many elders' main non-family gathering point is the mosque, not a doctor's office; and stigma, since cognitive decline is often treated as a private, unspoken matter rather than a medical condition with recognizable warning signs.</p>
+            <p>Stroke and dementia education in the U.S. is designed around routine contact with a doctor's office, not around the places elders actually spend their time. For Bangladeshi elders in the Bronx, that leaves two barriers stacked on top of each other: access, since many elders spend far more time in the community spaces around them than in a doctor's office; and stigma, since cognitive decline is often treated as a private, unspoken matter rather than a medical condition with recognizable warning signs.</p>
           </div>
         </div>
         <div class="callout">
@@ -196,8 +187,8 @@
       <div class="topics">
         <div class="topic-card">
           <span class="tag">Topic 01 &middot; CDC / ASA</span>
-          <h3>Recognizing stroke (BE-FAST)</h3>
-          <p>The balance-eyes-face-arm-speech-time framework, laid out so a family member can act in the first minutes, when treatment is most effective.</p>
+          <h3>Recognizing stroke early</h3>
+          <p>A simple recognition checklist so a family member can act in the first minutes, when treatment is most effective.</p>
         </div>
         <div class="topic-card">
           <span class="tag">Topic 02 &middot; Alzheimer's Assoc.</span>
@@ -210,26 +201,7 @@
           <p>CDC guidance on the link between uncontrolled blood pressure and stroke risk, and what regular monitoring looks like.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section id="signs">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">What the poster says</span>
-        <h2>BE-FAST: the six signs of stroke</h2>
-        <p>Our posters reproduce existing, established stroke-recognition guidance rather than original medical content. BE-FAST extends the CDC and American Stroke Association's FAST framework with two signs (Balance, Eyes) now used by many hospital systems for earlier recognition.</p>
-      </div>
-      <div class="fast">
-        <div class="fast-cell"><span class="fast-letter">B</span><h4>Balance</h4><p>Sudden loss of balance or coordination.</p></div>
-        <div class="fast-cell"><span class="fast-letter">E</span><h4>Eyes</h4><p>Sudden blurred or lost vision, in one or both eyes.</p></div>
-        <div class="fast-cell"><span class="fast-letter">F</span><h4>Face drooping</h4><p>Ask them to smile. Does one side droop?</p></div>
-        <div class="fast-cell"><span class="fast-letter">A</span><h4>Arm weakness</h4><p>Ask them to raise both arms. Does one drift down?</p></div>
-        <div class="fast-cell"><span class="fast-letter">S</span><h4>Speech difficulty</h4><p>Ask them to repeat a phrase. Is speech slurred?</p></div>
-        <div class="fast-cell"><span class="fast-letter">T</span><h4>Time to call</h4><p>If any sign is present, call 911 immediately.</p></div>
-      </div>
-      <span class="fast-note">If you see any of these signs, call 911 right away &mdash; note the time symptoms started.</span>
-      <p class="disclaimer">BCHI does not create or interpret medical content. Every poster reproduces existing public guidance from sources such as the CDC, the American Stroke Association, and the Alzheimer's Association, reviewed by our team only for plain language, layout, and cultural fit &mdash; not clinical accuracy, which rests with the original source. These materials are for community awareness only and do not replace medical diagnosis or advice. Anyone concerned about their own or a family member's symptoms should consult a physician or call 911 for emergency signs.</p>
+      <p class="disclaimer">BCHI does not create or interpret medical content. Every poster reproduces existing public guidance from sources such as the CDC and the Alzheimer's Association; community review covers plain language and cultural fit, not clinical accuracy. These materials are for awareness only and do not replace medical advice &mdash; call 911 for a medical emergency.</p>
     </div>
   </section>
 
@@ -237,7 +209,7 @@
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">How it happens</span>
-        <h2>From design to a mosque bulletin board</h2>
+        <h2>From design to the community bulletin board</h2>
       </div>
       <div class="steps">
         <div class="step">
@@ -246,15 +218,15 @@
         </div>
         <div class="step">
           <span class="num">02</span>
-          <div><h3>Community and imam review</h3><p>Before printing, a community member and the receiving mosque's leadership check the poster against its cited source for fidelity, along with tone, clarity, and cultural fit. We do not alter the underlying medical guidance.</p></div>
+          <div><h3>Community review</h3><p>Before printing, Bronx community members check the poster against its cited source for fidelity, along with tone, clarity, and cultural fit. We do not alter the underlying medical guidance.</p></div>
         </div>
         <div class="step">
           <span class="num">03</span>
-          <div><h3>Print and distribute</h3><p>Posters go up in spaces elders pass through regularly: entryways, bulletin boards, and community rooms of Bronx mosques serving Bangladeshi congregants.</p></div>
+          <div><h3>Print and distribute</h3><p>Posters go up in spaces elders pass through regularly across the Bronx: entryways, bulletin boards, and community rooms at mosques, community centers, and local businesses.</p></div>
         </div>
         <div class="step">
           <span class="num">04</span>
-          <div><h3>Follow up with the mosque</h3><p>We check back with mosque committees on whether posters prompted questions or conversations, and use that to prioritize the next topic.</p></div>
+          <div><h3>Follow up with the community</h3><p>We check back with the spaces hosting posters on whether they prompted questions or conversations, and use that to prioritize the next topic.</p></div>
         </div>
       </div>
     </div>
@@ -265,7 +237,7 @@
       <div class="involve-card">
         <div>
           <h2>Get involved</h2>
-          <p>We're looking for Bengali speakers to help review translations, mosque committees interested in hosting posters, and anyone who wants updates as the program grows. No spam, occasional updates only.</p>
+          <p>We're looking for Bengali speakers to help with community review, Bronx spaces interested in hosting posters, and anyone who wants updates as the program grows. No spam, occasional updates only.</p>
         </div>
         <div>
           <form class="signup" id="signup-form">

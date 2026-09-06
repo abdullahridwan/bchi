@@ -6,7 +6,7 @@
   :root{
     --bg:#FFFFFF; --card:#FFFFFF;
     --ink:#17161A; --ink-soft:#4B4A4E; --muted:#7B7A7E;
-    --line:#E7E6E3;
+    --line:#E7E6E3; --field-bg:#F2F1EE;
     --grad-1:#E93A8C; --grad-2:#F2665B; --grad-3:#F5A65B;
     --accent:#E93A8C; --accent-ink:#FFFFFF;
     --focus:#E93A8C;
@@ -15,7 +15,7 @@
     :root:not([data-theme="light"]){
       --bg:#17130F; --card:#1D1712;
       --ink:#F5EAD9; --ink-soft:#D8C9B5; --muted:#9C8F7D;
-      --line:#33291F;
+      --line:#33291F; --field-bg:#241D17;
       --grad-1:#FF4FA0; --grad-2:#FF7A63; --grad-3:#FFB86B;
       --accent:#FF4FA0; --accent-ink:#17130F;
       --focus:#FF4FA0;
@@ -24,7 +24,7 @@
   :root[data-theme="dark"]{
     --bg:#17130F; --card:#1D1712;
     --ink:#F5EAD9; --ink-soft:#D8C9B5; --muted:#9C8F7D;
-    --line:#33291F;
+    --line:#33291F; --field-bg:#241D17;
     --grad-1:#FF4FA0; --grad-2:#FF7A63; --grad-3:#FFB86B;
     --accent:#FF4FA0; --accent-ink:#17130F;
     --focus:#FF4FA0;
@@ -76,16 +76,23 @@
   }
   .hero h1{ font-size:clamp(2.6rem,5.2vw,4.1rem); line-height:1.05; margin-top:18px; }
   .hero p.lede{ max-width:48ch; font-size:1.08rem; color:var(--ink-soft); margin-top:20px; }
-  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:30px; }
-  .btn{
-    display:inline-flex; align-items:center; gap:8px; padding:13px 26px; border-radius:999px;
-    text-decoration:none; font-weight:600; font-size:.95rem; border:1px solid transparent;
-    transition:transform .12s ease, background .12s ease;
+  .intake{
+    display:flex; align-items:center; gap:6px; margin-top:30px;
+    background:var(--field-bg); border-radius:999px; padding:6px;
+    max-width:460px;
   }
-  .btn-primary{ background:var(--accent); color:#fff; }
-  .btn-primary:hover{ transform:translateY(-1px); background:color-mix(in srgb, var(--accent) 85%, black); }
-  .btn-ghost{ border-color:var(--line); color:var(--ink); }
-  .btn-ghost:hover{ border-color:var(--accent); color:var(--accent); }
+  .intake input{
+    flex:1; min-width:0; border:none; background:transparent; outline:none;
+    padding:12px 18px; font-family:'Inter',sans-serif; font-size:.95rem; color:var(--ink);
+  }
+  .intake input::placeholder{ color:var(--muted); }
+  .intake button{
+    flex-shrink:0; border:none; border-radius:999px; padding:13px 24px;
+    background:var(--ink); color:var(--bg); font-family:'Inter',sans-serif;
+    font-weight:600; font-size:.95rem; cursor:pointer; transition:opacity .12s ease;
+  }
+  .intake button:hover{ opacity:.85; }
+  .form-status{ font-size:.85rem; min-height:1.2em; color:var(--accent); margin-top:10px; }
 
   footer{ border-top:1px solid var(--line); padding-block:20px; font-size:.85rem; color:var(--muted); }
   footer a{ color:var(--accent); text-decoration:none; font-weight:500; }
@@ -118,10 +125,11 @@
           <span class="eyebrow">Bronx, New York &middot; community health literacy</span>
           <h1>Cognitive health, explained plainly, in the places our elders already trust.</h1>
           <p class="lede">We design plain-language posters on cognitive health issues facing our community and place them in community spaces across the Bronx.</p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="mailto:hello@bronxchi.org">Get involved</a>
-            <a class="btn btn-ghost" href="mailto:hello@bronxchi.org">Contact us</a>
-          </div>
+          <form class="intake" id="signup-form">
+            <input type="email" id="signup-email" placeholder="Your Email Address" required autocomplete="email">
+            <button type="submit">Get Notified</button>
+          </form>
+          <p class="form-status" id="signup-status" role="status"></p>
         </div>
         <div class="blob-stage" aria-hidden="true">
           <div class="blob"></div>
@@ -135,3 +143,19 @@
 <footer>
   <div class="wrap">Bronx Cognitive Health Initiative &middot; <a href="mailto:hello@bronxchi.org">hello@bronxchi.org</a></div>
 </footer>
+
+<script>
+  (function(){
+    var form = document.getElementById('signup-form');
+    var status = document.getElementById('signup-status');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var email = document.getElementById('signup-email').value.trim();
+      if(!email){ return; }
+      window.location.href = 'mailto:hello@bronxchi.org?subject=' +
+        encodeURIComponent('BCHI updates signup') +
+        '&body=' + encodeURIComponent('Please add me to updates: ' + email);
+      status.textContent = 'Opening your email app to confirm your sign-up...';
+    });
+  })();
+</script>

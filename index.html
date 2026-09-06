@@ -124,7 +124,7 @@
           <p class="lede">We design plain-language posters on cognitive health issues facing the Bengali immigrant community and place them in community spaces across the Bronx.</p>
           <form class="intake" id="signup-form">
             <input type="email" id="signup-email" placeholder="Your Email Address" required autocomplete="email">
-            <button type="submit">Get Notified</button>
+            <button type="submit">Join Us</button>
           </form>
           <p class="form-status" id="signup-status" role="status"></p>
           <p class="contact-line">Have a question? <a href="mailto:hello@bronxchi.org">Contact Us</a></p>
@@ -151,9 +151,9 @@
       var email = document.getElementById('signup-email').value.trim();
       if(!email){ return; }
       window.location.href = 'mailto:hello@bronxchi.org?subject=' +
-        encodeURIComponent('BCHI updates signup') +
-        '&body=' + encodeURIComponent('Please add me to updates: ' + email);
-      status.textContent = 'Opening your email app to confirm your sign-up...';
+        encodeURIComponent('I want to volunteer with BCHI') +
+        '&body=' + encodeURIComponent('Please add me as a volunteer: ' + email);
+      status.textContent = 'Opening your email app to confirm you want to volunteer...';
     });
   })();
 </script>

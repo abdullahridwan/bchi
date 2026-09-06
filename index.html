@@ -87,7 +87,8 @@
     font-weight:600; font-size:.95rem; cursor:pointer; transition:opacity .12s ease;
   }
   .intake button:hover{ opacity:.85; }
-  .form-status{ font-size:.85rem; min-height:1.2em; color:var(--accent); margin-top:10px; }
+  .form-status{ font-size:.85rem; min-height:1.2em; color:var(--ink-soft); margin-top:10px; }
+  .form-status a{ color:var(--accent); text-decoration:underline; }
   .contact-line{ font-size:.9rem; color:var(--ink-soft); margin-top:14px; }
   .contact-line a{ color:var(--ink-soft); text-decoration:underline; }
   .contact-line a:hover{ color:var(--accent); }
@@ -150,10 +151,16 @@
       e.preventDefault();
       var email = document.getElementById('signup-email').value.trim();
       if(!email){ return; }
-      window.location.href = 'mailto:hello@bronxchi.org?subject=' +
+      var mailto = 'mailto:hello@bronxchi.org?subject=' +
         encodeURIComponent('I want to volunteer with BCHI') +
         '&body=' + encodeURIComponent('Please add me as a volunteer: ' + email);
-      status.textContent = 'Opening your email app to confirm you want to volunteer...';
+      var link = document.createElement('a');
+      link.href = mailto;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      status.innerHTML = 'If your email app didn\'t open, email us directly at ' +
+        '<a href="' + mailto + '">hello@bronxchi.org</a>.';
     });
   })();
 </script>

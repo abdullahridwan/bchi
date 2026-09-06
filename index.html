@@ -1,0 +1,319 @@
+<title>Bronx Cognitive Health Initiative</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF; --bg-soft:#F5F4F2; --card:#FFFFFF;
+    --ink:#0E0E10; --ink-soft:#45454A; --muted:#6B6B6F;
+    --accent:#FF5A36; --accent-deep:#E23E1F; --accent-ink:#FFFFFF;
+    --line:#E4E2DD;
+    --focus:#FF5A36;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0E0E10; --bg-soft:#17171A; --card:#141416;
+      --ink:#F5F4F2; --ink-soft:#C9C8C4; --muted:#9A9A9E;
+      --accent:#FF5A36; --accent-deep:#FF7657; --accent-ink:#0E0E10;
+      --line:#2A2A2E; --focus:#FF7657;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E0E10; --bg-soft:#17171A; --card:#141416;
+    --ink:#F5F4F2; --ink-soft:#C9C8C4; --muted:#9A9A9E;
+    --accent:#FF5A36; --accent-deep:#FF7657; --accent-ink:#0E0E10;
+    --line:#2A2A2E; --focus:#FF7657;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{ font-family:'Space Grotesk', system-ui, sans-serif; text-wrap:balance; margin:0; letter-spacing:-0.01em; color:var(--ink); }
+  .mono{ font-family:'IBM Plex Mono', ui-monospace, monospace; }
+  a{ color:inherit; }
+  ::selection{ background:var(--accent); color:var(--accent-ink); }
+  :focus-visible{ outline:2px solid var(--focus); outline-offset:3px; }
+
+  .wrap{ max-width:1040px; margin:0 auto; padding-inline:clamp(20px,5vw,56px); }
+
+  /* icon mark */
+  .mark{ display:inline-flex; align-items:center; justify-content:center; background:var(--accent); border-radius:7px; flex-shrink:0; }
+
+  header{
+    position:sticky; top:0; z-index:20;
+    background:color-mix(in srgb, var(--bg) 90%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding-block:14px; }
+  .wordmark{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .wordmark span{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.15rem; letter-spacing:-0.02em; }
+  nav.links{ display:flex; gap:clamp(14px,3vw,28px); }
+  nav.links a{ text-decoration:none; font-size:.9rem; color:var(--ink-soft); font-weight:500; }
+  nav.links a:hover{ color:var(--accent); }
+
+  /* hero */
+  .hero{ position:relative; overflow:hidden; padding-block: clamp(56px,9vw,100px) clamp(48px,8vw,76px); }
+  .hero-pulse{ position:absolute; inset:auto 0 -10% 0; height:280px; opacity:.06; pointer-events:none; }
+  :root:not([data-theme="light"]) .hero-pulse{ opacity:.1; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace; font-size:.75rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--accent); font-weight:500;
+  }
+  .hero h1{ font-size:clamp(2.4rem,5vw,3.8rem); font-weight:700; line-height:1.04; margin-top:20px; max-width:16ch; }
+  .hero p.lede{ max-width:56ch; font-size:1.1rem; color:var(--ink-soft); margin-top:22px; }
+  .hero .status{ margin-top:10px; font-size:.85rem; color:var(--muted); }
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:34px; position:relative; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:13px 24px; border-radius:5px;
+    text-decoration:none; font-weight:600; font-size:.95rem; border:1px solid transparent;
+    transition:transform .12s ease, background .12s ease;
+  }
+  .btn-primary{ background:var(--accent); color:var(--accent-ink); }
+  .btn-primary:hover{ transform:translateY(-1px); background:var(--accent-deep); }
+  .btn-ghost{ border-color:var(--line); color:var(--ink); }
+  .btn-ghost:hover{ border-color:var(--accent); color:var(--accent); }
+
+  section{ padding-block: clamp(44px,7vw,76px); position:relative; }
+  .section-head{ max-width:64ch; margin-bottom:clamp(28px,4vw,40px); }
+  .section-head h2{ font-size:clamp(1.6rem,3vw,2.1rem); font-weight:700; }
+  .section-head .eyebrow{ margin-bottom:12px; }
+  .section-head p{ color:var(--ink-soft); margin-top:12px; font-size:1.02rem; max-width:58ch; }
+
+  .grid-2{ display:grid; grid-template-columns: 1.1fr .9fr; gap:clamp(28px,5vw,56px); align-items:start; }
+  @media (max-width:760px){ .grid-2{ grid-template-columns:1fr; } }
+
+  .callout{ background:var(--card); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:4px; padding:22px 24px; }
+  .callout p{ margin:0; color:var(--ink-soft); font-size:.98rem; }
+  .callout .src{ display:block; margin-top:12px; font-size:.78rem; color:var(--muted); font-family:'IBM Plex Mono',monospace; }
+
+  .topics{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:28px; }
+  @media (max-width:760px){ .topics{ grid-template-columns:1fr; } }
+  .topic-card{ background:var(--card); padding:26px 22px; display:flex; flex-direction:column; gap:10px; }
+  .topic-card .tag{ font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; color:var(--accent); font-weight:500; }
+  .topic-card h3{ font-size:1.15rem; font-weight:700; }
+  .topic-card p{ color:var(--ink-soft); font-size:.92rem; margin:0; }
+
+  .fast{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:24px; }
+  @media (max-width:700px){ .fast{ grid-template-columns:repeat(2,1fr); } }
+  .fast-cell{ background:var(--card); padding:22px 18px; display:flex; flex-direction:column; gap:6px; }
+  .fast-letter{ font-family:'Space Grotesk',sans-serif; font-size:2.1rem; font-weight:700; color:var(--accent); line-height:1; }
+  .fast-cell h4{ margin:0; font-size:.95rem; font-weight:600; }
+  .fast-cell p{ margin:0; font-size:.83rem; color:var(--muted); }
+  .fast-note{ margin-top:16px; font-size:.85rem; font-weight:500; color:var(--accent); display:inline-block; }
+
+  .disclaimer{ font-size:.82rem; color:var(--muted); margin-top:20px; max-width:62ch; border-top:1px solid var(--line); padding-top:16px; }
+
+  .steps{ margin-top:30px; display:flex; flex-direction:column; }
+  .step{ display:grid; grid-template-columns:56px 1fr; gap:20px; padding-block:22px; border-top:1px solid var(--line); }
+  .step:last-child{ border-bottom:1px solid var(--line); }
+  .step .num{ font-family:'IBM Plex Mono',monospace; color:var(--accent); font-weight:500; font-size:1.05rem; padding-top:2px; }
+  .step h3{ font-size:1.05rem; font-weight:700; }
+  .step p{ margin:6px 0 0; color:var(--ink-soft); font-size:.94rem; max-width:58ch; }
+
+  .involve-card{ background:var(--bg-soft); border:1px solid var(--line); border-radius:6px; padding:clamp(28px,4vw,40px); display:grid; grid-template-columns:1.1fr .9fr; gap:36px; }
+  @media (max-width:760px){ .involve-card{ grid-template-columns:1fr; } }
+  .involve-card h2{ font-size:1.5rem; }
+  .involve-card p{ color:var(--ink-soft); margin-top:10px; font-size:.98rem; }
+  form.signup{ display:flex; flex-direction:column; gap:12px; }
+  .field-row{ display:flex; gap:10px; flex-wrap:wrap; }
+  input[type="email"]{ flex:1; min-width:180px; padding:13px 14px; border:1px solid var(--line); border-radius:5px; background:var(--card); color:var(--ink); font-family:'IBM Plex Sans',sans-serif; font-size:.95rem; }
+  input:focus{ border-color:var(--accent); }
+  .form-status{ font-size:.85rem; min-height:1.2em; color:var(--accent); }
+
+  footer{ border-top:1px solid var(--line); padding-block:clamp(32px,5vw,48px); }
+  .footer-grid{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; font-size:.88rem; color:var(--muted); }
+  footer .fwordmark{ display:flex; align-items:center; gap:8px; font-family:'Space Grotesk',sans-serif; color:var(--ink); font-weight:700; }
+  footer a.mail{ color:var(--accent); text-decoration:none; font-weight:500; }
+  footer a.mail:hover{ text-decoration:underline; }
+
+  @media (prefers-reduced-motion:reduce){ html{ scroll-behavior:auto; } .btn{ transition:none; } }
+</style>
+
+<header>
+  <div class="wrap nav">
+    <a class="wordmark" href="#top">
+      <span class="mark"><svg width="30" height="30" viewBox="0 0 100 100"><rect width="100" height="100" rx="18" fill="none"/><path d="M12,50 L30,50 L38,28 L48,72 L58,50 L88,50" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span>BCHI</span>
+    </a>
+    <nav class="links">
+      <a href="#problem">Why</a>
+      <a href="#program">Program</a>
+      <a href="#signs">Warning Signs</a>
+      <a href="#involved">Get Involved</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <svg class="hero-pulse" viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,140 L260,140 L300,60 L340,180 L380,110 L420,140 L1000,140" fill="none" stroke="var(--ink)" stroke-width="3"/>
+    </svg>
+    <div class="wrap" style="position:relative;">
+      <span class="eyebrow">Bronx, New York &middot; community health literacy</span>
+      <h1>Cognitive health, explained plainly, in the places our elders already trust.</h1>
+      <p class="lede">The Bronx Cognitive Health Initiative designs plain-language English stroke and dementia awareness posters and distributes them through mosques serving the Bronx's Bangladeshi community, closing a gap that clinics and city health campaigns rarely reach.</p>
+      <p class="status">501(c)(3) status: application pending &middot; founded by a first-generation Bengali-American Bronx resident</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#involved">Get involved</a>
+        <a class="btn btn-ghost" href="#program">See the program</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="problem">
+    <div class="wrap">
+      <div class="grid-2">
+        <div>
+          <div class="section-head">
+            <span class="eyebrow">The gap</span>
+            <h2>Awareness materials rarely reach elder, limited-English immigrant households.</h2>
+            <p>Stroke and dementia education in the U.S. is designed around routine contact with a doctor's office, not around the places elders actually spend their time. For Bangladeshi elders in the Bronx, that leaves two barriers stacked on top of each other: access, since many elders' main non-family gathering point is the mosque, not a doctor's office; and stigma, since cognitive decline is often treated as a private, unspoken matter rather than a medical condition with recognizable warning signs.</p>
+          </div>
+        </div>
+        <div class="callout">
+          <p>South Asian adults face cardiovascular and stroke risk at higher rates and younger ages than the general U.S. population, according to American Heart Association research, making early symptom recognition especially consequential for this community.</p>
+          <span class="src">Source: American Heart Association, scientific statements on South Asian cardiovascular risk</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="program" style="background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">The program</span>
+        <h2>Plain-language posters, placed where elders already gather.</h2>
+        <p>Each poster uses plain, direct English, large type, and simple iconography over dense paragraphs, and is designed for a bulletin board, not a pamphlet rack. We start with three topics chosen for how actionable and time-sensitive they are.</p>
+      </div>
+      <div class="topics">
+        <div class="topic-card">
+          <span class="tag">Topic 01 &middot; CDC / ASA</span>
+          <h3>Recognizing stroke (BE-FAST)</h3>
+          <p>The balance-eyes-face-arm-speech-time framework, laid out so a family member can act in the first minutes, when treatment is most effective.</p>
+        </div>
+        <div class="topic-card">
+          <span class="tag">Topic 02 &middot; Alzheimer's Assoc.</span>
+          <h3>Early dementia signs</h3>
+          <p>The Alzheimer's Association's published warning signs, distinguishing normal aging from signs worth a doctor's visit.</p>
+        </div>
+        <div class="topic-card">
+          <span class="tag">Topic 03 &middot; CDC</span>
+          <h3>Blood pressure &amp; risk</h3>
+          <p>CDC guidance on the link between uncontrolled blood pressure and stroke risk, and what regular monitoring looks like.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="signs">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What the poster says</span>
+        <h2>BE-FAST: the six signs of stroke</h2>
+        <p>Our posters reproduce existing, established stroke-recognition guidance rather than original medical content. BE-FAST extends the CDC and American Stroke Association's FAST framework with two signs (Balance, Eyes) now used by many hospital systems for earlier recognition.</p>
+      </div>
+      <div class="fast">
+        <div class="fast-cell"><span class="fast-letter">B</span><h4>Balance</h4><p>Sudden loss of balance or coordination.</p></div>
+        <div class="fast-cell"><span class="fast-letter">E</span><h4>Eyes</h4><p>Sudden blurred or lost vision, in one or both eyes.</p></div>
+        <div class="fast-cell"><span class="fast-letter">F</span><h4>Face drooping</h4><p>Ask them to smile. Does one side droop?</p></div>
+        <div class="fast-cell"><span class="fast-letter">A</span><h4>Arm weakness</h4><p>Ask them to raise both arms. Does one drift down?</p></div>
+        <div class="fast-cell"><span class="fast-letter">S</span><h4>Speech difficulty</h4><p>Ask them to repeat a phrase. Is speech slurred?</p></div>
+        <div class="fast-cell"><span class="fast-letter">T</span><h4>Time to call</h4><p>If any sign is present, call 911 immediately.</p></div>
+      </div>
+      <span class="fast-note">If you see any of these signs, call 911 right away &mdash; note the time symptoms started.</span>
+      <p class="disclaimer">BCHI does not create or interpret medical content. Every poster reproduces existing public guidance from sources such as the CDC, the American Stroke Association, and the Alzheimer's Association, reviewed by our team only for plain language, layout, and cultural fit &mdash; not clinical accuracy, which rests with the original source. These materials are for community awareness only and do not replace medical diagnosis or advice. Anyone concerned about their own or a family member's symptoms should consult a physician or call 911 for emergency signs.</p>
+    </div>
+  </section>
+
+  <section style="background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">How it happens</span>
+        <h2>From design to a mosque bulletin board</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="num">01</span>
+          <div><h3>Design in plain, direct English</h3><p>Each poster is drafted around a single topic, sourced from CDC and Alzheimer's Association public guidance, and written at a reading level appropriate for a bulletin board glance, not a clinical handout.</p></div>
+        </div>
+        <div class="step">
+          <span class="num">02</span>
+          <div><h3>Community and imam review</h3><p>Before printing, a community member and the receiving mosque's leadership check the poster against its cited source for fidelity, along with tone, clarity, and cultural fit. We do not alter the underlying medical guidance.</p></div>
+        </div>
+        <div class="step">
+          <span class="num">03</span>
+          <div><h3>Print and distribute</h3><p>Posters go up in spaces elders pass through regularly: entryways, bulletin boards, and community rooms of Bronx mosques serving Bangladeshi congregants.</p></div>
+        </div>
+        <div class="step">
+          <span class="num">04</span>
+          <div><h3>Follow up with the mosque</h3><p>We check back with mosque committees on whether posters prompted questions or conversations, and use that to prioritize the next topic.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="involved">
+    <div class="wrap">
+      <div class="involve-card">
+        <div>
+          <h2>Get involved</h2>
+          <p>We're looking for Bengali speakers to help review translations, mosque committees interested in hosting posters, and anyone who wants updates as the program grows. No spam, occasional updates only.</p>
+        </div>
+        <div>
+          <form class="signup" id="signup-form">
+            <label for="signup-email" class="mono" style="font-size:.8rem; color:var(--ink-soft);">Email address</label>
+            <div class="field-row">
+              <input type="email" id="signup-email" name="email" placeholder="you@example.com" required autocomplete="email">
+              <button type="submit" class="btn btn-primary">Sign up</button>
+            </div>
+            <p class="form-status" id="signup-status" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap footer-grid">
+    <div>
+      <div class="fwordmark">
+        <span class="mark"><svg width="20" height="20" viewBox="0 0 100 100"><path d="M12,50 L30,50 L38,28 L48,72 L58,50 L88,50" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Bronx Cognitive Health Initiative
+      </div>
+      <div style="margin-top:6px;">The Bronx, New York</div>
+    </div>
+    <div>
+      <div>General inquiries</div>
+      <a class="mail" href="mailto:hello@bronxchi.org">hello@bronxchi.org</a>
+    </div>
+    <div>
+      <div>Status</div>
+      <div>501(c)(3) application pending</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var form = document.getElementById('signup-form');
+    var status = document.getElementById('signup-status');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var email = document.getElementById('signup-email').value.trim();
+      if(!email){ return; }
+      window.location.href = 'mailto:hello@bronxchi.org?subject=' +
+        encodeURIComponent('BCHI updates signup') +
+        '&body=' + encodeURIComponent('Please add me to updates: ' + email);
+      status.textContent = 'Opening your email app to confirm your sign-up...';
+    });
+  })();
+</script>

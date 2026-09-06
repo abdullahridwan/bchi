@@ -1,12 +1,12 @@
 <title>Bronx Cognitive Health Initiative</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#FBF0E1; --bg-soft:#F4E2C8; --card:#FFF9EF;
+    --bg:#FFF4E3; --bg-soft:#FCE7C7; --card:#FFFBF3;
     --ink:#1B1815; --ink-soft:#4A423B; --muted:#8A7F73;
-    --line:#E9D9C0;
+    --line:#EEDCBB;
     --grad-1:#E93A8C; --grad-2:#F2665B; --grad-3:#F5A65B;
     --accent:#E93A8C; --accent-ink:#FFFFFF;
     --focus:#E93A8C;
@@ -37,14 +37,12 @@
     font-family:'Inter', system-ui, -apple-system, sans-serif;
     line-height:1.6; -webkit-font-smoothing:antialiased;
   }
-  h1,h2,h3{ font-family:'Fredoka', system-ui, sans-serif; text-wrap:balance; margin:0; color:var(--ink); }
+  h1,h2,h3{ font-family:'Instrument Serif', Georgia, serif; font-weight:400; text-wrap:balance; margin:0; color:var(--ink); }
   a{ color:inherit; }
   ::selection{ background:var(--grad-1); color:#fff; }
   :focus-visible{ outline:2px solid var(--focus); outline-offset:3px; }
 
   .wrap{ max-width:1080px; margin:0 auto; padding-inline:clamp(20px,5vw,56px); }
-
-  .mark{ display:inline-flex; flex-shrink:0; border-radius:50%; }
 
   header{
     position:sticky; top:0; z-index:20;
@@ -54,7 +52,7 @@
   }
   .nav{ display:flex; align-items:center; justify-content:space-between; padding-block:14px; }
   .wordmark{ display:flex; align-items:center; gap:10px; text-decoration:none; }
-  .wordmark span{ font-family:'Fredoka',sans-serif; font-weight:600; font-size:1.2rem; }
+  .wordmark span{ font-family:'Instrument Serif',Georgia,serif; font-weight:400; font-size:1.4rem; }
   nav.links{ display:flex; gap:clamp(14px,3vw,28px); }
   nav.links a{ text-decoration:none; font-size:.9rem; color:var(--ink-soft); font-weight:500; }
   nav.links a:hover{ color:var(--accent); }
@@ -82,7 +80,7 @@
     font-size:.78rem; letter-spacing:.06em; text-transform:uppercase;
     color:var(--accent); font-weight:600;
   }
-  .hero h1{ font-size:clamp(2.3rem,4.6vw,3.5rem); font-weight:600; line-height:1.08; margin-top:18px; }
+  .hero h1{ font-size:clamp(2.6rem,5.2vw,4.1rem); font-weight:400; line-height:1.05; margin-top:18px; }
   .hero p.lede{ max-width:48ch; font-size:1.08rem; color:var(--ink-soft); margin-top:20px; }
   .cta-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:30px; }
   .btn{
@@ -97,7 +95,7 @@
 
   section{ padding-block: clamp(44px,7vw,76px); position:relative; }
   .section-head{ max-width:64ch; margin-bottom:clamp(28px,4vw,40px); }
-  .section-head h2{ font-size:clamp(1.55rem,3vw,2rem); font-weight:600; }
+  .section-head h2{ font-size:clamp(1.7rem,3.4vw,2.3rem); font-weight:400; }
   .section-head .eyebrow{ margin-bottom:12px; }
   .section-head p{ color:var(--ink-soft); margin-top:12px; font-size:1.02rem; max-width:58ch; }
 
@@ -113,7 +111,7 @@
   @media (max-width:760px){ .topics{ grid-template-columns:1fr; } }
   .topic-card{ background:var(--card); border:1px solid var(--line); border-radius:20px; padding:26px 24px; display:flex; flex-direction:column; gap:10px; }
   .topic-card .tag{ font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; color:var(--accent); font-weight:600; }
-  .topic-card h3{ font-size:1.15rem; font-weight:600; }
+  .topic-card h3{ font-size:1.3rem; font-weight:400; }
   .topic-card p{ color:var(--ink-soft); font-size:.92rem; margin:0; }
 
   .disclaimer{ font-size:.82rem; color:var(--muted); margin-top:28px; max-width:62ch; border-top:1px solid var(--line); padding-top:16px; }
@@ -121,8 +119,8 @@
   .steps{ margin-top:30px; display:flex; flex-direction:column; }
   .step{ display:grid; grid-template-columns:56px 1fr; gap:20px; padding-block:22px; border-top:1px solid var(--line); }
   .step:last-child{ border-bottom:1px solid var(--line); }
-  .step .num{ color:var(--accent); font-weight:600; font-size:1.05rem; padding-top:2px; font-family:'Fredoka',sans-serif; }
-  .step h3{ font-size:1.05rem; font-weight:600; }
+  .step .num{ color:var(--accent); font-weight:400; font-size:1.2rem; padding-top:2px; font-family:'Instrument Serif',Georgia,serif; }
+  .step h3{ font-size:1.2rem; font-weight:400; }
   .step p{ margin:6px 0 0; color:var(--ink-soft); font-size:.94rem; max-width:58ch; }
 
   .involve-card{ background:var(--bg-soft); border:1px solid var(--line); border-radius:24px; padding:clamp(28px,4vw,40px); display:grid; grid-template-columns:1.1fr .9fr; gap:36px; }
@@ -137,7 +135,7 @@
 
   footer{ border-top:1px solid var(--line); padding-block:clamp(32px,5vw,48px); }
   .footer-grid{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; font-size:.88rem; color:var(--muted); }
-  footer .fwordmark{ display:flex; align-items:center; gap:8px; font-family:'Fredoka',sans-serif; color:var(--ink); font-weight:600; }
+  footer .fwordmark{ display:flex; align-items:center; gap:8px; font-family:'Instrument Serif',Georgia,serif; color:var(--ink); font-weight:400; font-size:1.15rem; }
   footer a.mail{ color:var(--accent); text-decoration:none; font-weight:500; }
   footer a.mail:hover{ text-decoration:underline; }
 
@@ -154,7 +152,6 @@
 <header>
   <div class="wrap nav">
     <a class="wordmark" href="#top">
-      <span class="mark"><svg width="28" height="28" viewBox="0 0 100 100"><defs><linearGradient id="mk" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--grad-1)"/><stop offset="55%" stop-color="var(--grad-2)"/><stop offset="100%" stop-color="var(--grad-3)"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="url(#mk)"/></svg></span>
       <span>BCHI</span>
     </a>
     <nav class="links">
@@ -285,10 +282,7 @@
 <footer id="contact">
   <div class="wrap footer-grid">
     <div>
-      <div class="fwordmark">
-        <span class="mark"><svg width="18" height="18" viewBox="0 0 100 100"><defs><linearGradient id="mkf" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--grad-1)"/><stop offset="55%" stop-color="var(--grad-2)"/><stop offset="100%" stop-color="var(--grad-3)"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="url(#mkf)"/></svg></span>
-        Bronx Cognitive Health Initiative
-      </div>
+      <div class="fwordmark">Bronx Cognitive Health Initiative</div>
       <div style="margin-top:6px;">The Bronx, New York</div>
     </div>
     <div>
